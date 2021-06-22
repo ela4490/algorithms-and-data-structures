@@ -1,3 +1,5 @@
+/* Link: https://www.hackerrank.com/challenges/crush/problem */
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
