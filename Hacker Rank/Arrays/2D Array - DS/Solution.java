@@ -1,4 +1,4 @@
-/* Link - https://www.hackerrank.com/challenges/2d-array/problem */
+/* Link: https://www.hackerrank.com/challenges/2d-array/problem */
 
 import java.io.*;
 import java.math.*;
