@@ -38,7 +38,6 @@ class Codechef
 {
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		// your code goes here
 		try{
 		    Scanner sc = new Scanner(System.in);
 		    double withdraw_amount = sc.nextDouble();
