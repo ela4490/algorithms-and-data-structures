@@ -1,57 +1,36 @@
 /* Link: https://www.hackerrank.com/challenges/2d-array/problem */
 
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
-
-class Result {
-
-    /*
-     * Complete the 'hourglassSum' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts 2D_INTEGER_ARRAY arr as parameter.
-     */
-
-    public static int hourglassSum(List<List<Integer>> arr) {
-    // Write your code here
-
-    }
-}
 
 public class Solution {
+
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        Scanner s = new Scanner(System.in);
 
-        List<List<Integer>> arr = new ArrayList<>();
+        int[][] arr = new int[6][6];
 
-        IntStream.range(0, 6).forEach(i -> {
-            try {
-                arr.add(
-                    Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                        .map(Integer::parseInt)
-                        .collect(toList())
-                );
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+        for (int j = 0; j < 6; j++) {
+            for (int i = 0; i < 6; i++) {
+                arr[i][j] = s.nextInt();
             }
-        });
+        }
 
-        int result = Result.hourglassSum(arr);
+        int maxHourGlass = hourglassSum(arr, 1, 1);
+        for(int j = 1; j<5; j++)
+        {
+            for(int i=1; i<5; i++) {
+                int result = hourglassSum(arr, i, j);
+                if (result > maxHourGlass){
+                    maxHourGlass = result;
+                }
+            }
+        }
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
+        System.out.println(maxHourGlass);
+    }
 
-        bufferedReader.close();
-        bufferedWriter.close();
+    static int hourglassSum(int[][] array, int x, int y) {
+        return array[x-1][y-1] + array[x][y-1] + array[x+1][y-1] + array[x][y] + array[x-1][y+1] + array[x][y+1] + array[x+1][y+1];
     }
 }
