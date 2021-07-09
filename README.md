@@ -1,4 +1,4 @@
-# Algorithms and Data Structures
+### Algorithms and Data Structures
 This repository contains java solutions for the various problems which are based algorithms and data structures from platforms like Hacker Rank, Leet Code, Hacker Earth, Geeks For Geeks and Code Chef.
 
 Note : Since, these problems were done on the online platforms, few of the solutions contains only the logic.
