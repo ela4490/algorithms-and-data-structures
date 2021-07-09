@@ -75,17 +75,17 @@ class Solution
     void diagonalSort(int matrix[][], int n, int m)
     {
         //col=0
-        for(int row=1;row<n;row++){
-            sort(matrix,row,0,n,m);
+        for(int row=1; row<n; row++){
+            sort(matrix, row, 0, n, m);
         }
         //row=0
-        for(int col=1;col<m;col++){
-            reverse(matrix,0,col,n,m);
+        for(int col=1; col<m; col++){
+            reverse(matrix, 0, col, n, m);
         }
     }
-    void sort(int[][] mat,int row,int col,int m,int n){
-        List<Integer> values=new ArrayList<>();
-        int r=row,c=col;
+    void sort(int[][] mat, int row, int col, int m, int n){
+        List<Integer> values = new ArrayList<>();
+        int r = row,c = col;
         while(r<m && c<n){
             values.add(mat[r][c]);
             r++;
@@ -94,18 +94,18 @@ class Solution
         
         Collections.sort(values);
         
-        r=row;
-        c=col;
-        int ind=0;
+        r = row;
+        c = col;
+        int ind = 0;
         while(r<m && c<n){
-            mat[r][c]=values.get(ind++);
+            mat[r][c] = values.get(ind++);
             r++;
             c++;
         }
     }
-    void reverse(int[][] mat,int row,int col,int m,int n){
-        List<Integer> values=new ArrayList<>();
-        int r=row,c=col;
+    void reverse(int[][] mat, int row, int col, int m, int n){
+        List<Integer> values = new ArrayList<>();
+        int r = row,c = col;
         while(r<m && c<n){
             values.add(mat[r][c]);
             r++;
@@ -115,9 +115,9 @@ class Solution
         Collections.sort(values);
         Collections.reverse(values);
         
-        r=row;
-        c=col;
-        int ind=0;
+        r = row;
+        c = col;
+        int ind = 0;
         while(r<m && c<n){
             mat[r][c]=values.get(ind++);
             r++;
