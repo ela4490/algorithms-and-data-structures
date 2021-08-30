@@ -24,7 +24,7 @@ Constraints:
 nums is sorted in ascending order.
 1 <= n <= 2^31 - 1
     
-Link: =nuhttps://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/617/week-5-august-29th-august-31st/3956/ */
+Link: https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/617/week-5-august-29th-august-31st/3956/ */
 
 class Solution {
     public int minPatches(int[] nums, int n) {
