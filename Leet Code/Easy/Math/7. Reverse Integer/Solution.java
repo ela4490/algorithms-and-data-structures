@@ -20,7 +20,7 @@ Output: 0
 Constraints:
 -2^31 <= x <= 2^31 - 1
 
-Link: https://leetcode.com/problems/reverse-integer/*/
+Link: https://leetcode.com/problems/reverse-integer/ */
 
 class Solution {
     public int reverse(int x) {
