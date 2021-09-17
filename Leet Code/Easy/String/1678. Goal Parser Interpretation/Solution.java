@@ -32,12 +32,16 @@ class Solution {
             
             if(c == 'G') sb.append(c);
             else if(c == '(') {
-                if(i < command.length() && command.charAt(i + 1) == ')') sb.append('o');
-                else sb.append("al");
+                
+                if(i < command.length() && command.charAt(i + 1) == ')') {
+                    sb.append('o');
+                    i++;
+                } else {
+                    sb.append("al");
+                    i += 3;
+                }
             }
-            
         }
-        
         return sb.toString();
     }
 }
