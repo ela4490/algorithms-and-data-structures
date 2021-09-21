@@ -15,6 +15,24 @@ nums[i] is either 0 or 1.
     
 Link: https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/638/week-3-september-15th-september-21st/3982/ */
 
+//Optimized Solution with Time Complexity : O(n)
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = nums[0];
+        
+        for(int i = 1; i < nums.length; i++) {
+            
+            if(nums[i] == 1) {
+                nums[i] += nums[i - 1];
+            }
+            
+            count = Math.max(count, nums[i]);
+        }
+        
+        return count;
+    }
+}
+
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
         int count = 0;
