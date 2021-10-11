@@ -15,6 +15,8 @@ The number of nodes in the tree is in the range [1, 10^4].
     
 Link: https://leetcode.com/problems/diameter-of-binary-tree/ */
 
+//Iterative Approach
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -30,6 +32,7 @@ Link: https://leetcode.com/problems/diameter-of-binary-tree/ */
  *     }
  * }
  */
+
 class Solution {
     public int diameterOfBinaryTree(TreeNode root) {
         Map<TreeNode, Integer> map = new HashMap<>();
@@ -58,5 +61,44 @@ class Solution {
         }
         
         return diameter;
+    }
+}
+
+//Recursive Approach
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        
+        int current = depth(root.left) + depth(root.right);
+        int left = diameterOfBinaryTree(root.left);
+        int right = diameterOfBinaryTree(root.right);
+        
+        return Math.max(current, Math.max(left, right));
+    }
+    
+    private int depth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        
+        return 1 + Math.max(depth(root.left), depth(root.right));
     }
 }
