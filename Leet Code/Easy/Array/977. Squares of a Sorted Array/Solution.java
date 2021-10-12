@@ -19,17 +19,28 @@ Follow up: Squaring each element and sorting the new array is very trivial, coul
     
 Link: https://leetcode.com/problems/squares-of-a-sorted-array/ */
 
+//Time Complexity : O(N)
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        List<Integer> list = new ArrayList<Integer>();
         int[] result = new int[nums.length];
-        for(int i=0; i<nums.length; i++){
-            list.add(nums[i]*nums[i]);
+        
+        for(int k = 0; k < nums.length; k++) {
+            nums[k] = nums[k] * nums[k];
         }
-        Collections.sort(list);
-        for(int i=0; i<nums.length; i++){
-            result[i] = list.get(i);
+        
+        int i = 0;
+        int j = nums.length - 1;
+        
+        for(int k = nums.length - 1; k >= 0; k--) {
+            if(nums[i] <= nums[j]) {
+                result[k] = nums[j];
+                j--;
+            } else {
+                result[k] = nums[i];
+                i++;
+            }
         }
+        
         return result;
     }
 }
