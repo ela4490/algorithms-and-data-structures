@@ -51,7 +51,7 @@ class Solution {
 
 		StringBuilder sb = new StringBuilder();
 		
-        for (int r : result) {
+        	for (int r : result) {
 			if (sb.length() == 0 && r == 0) {
 				continue;
 			}
