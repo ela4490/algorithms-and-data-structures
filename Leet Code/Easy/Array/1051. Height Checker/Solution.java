@@ -32,17 +32,21 @@ Link: https://leetcode.com/problems/height-checker/ */
 
 class Solution {
     public int heightChecker(int[] heights) {
-        int[] expected = new int[heights.length];
         int count = 0;
-        for(int i=0; i<heights.length; i++){
+        int[] expected = new int[heights.length];
+        
+        for(int i = 0; i < heights.length; i++){
             expected[i] = heights[i];
         }
+        
         Arrays.sort(expected);
-        for(int i=0; i<heights.length; i++){
-            if(heights[i]!=expected[i]){
+        
+        for(int i = 0; i < heights.length; i++){
+            if(heights[i] != expected[i]){
                 count++;
             }
         }
+        
         return count;
     }
 }
