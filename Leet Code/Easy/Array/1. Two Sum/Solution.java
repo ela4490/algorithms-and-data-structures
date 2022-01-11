@@ -21,17 +21,39 @@ Only one valid answer exists.
     
 Link: https://leetcode.com/problems/two-sum/ */
 
+// Brute Force Approach with Time Complexity : O(N^2)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] values = new int[2];
+        
         for(int i = 0; i < nums.length; i++) {
-            for(int j = i+1; j < nums.length; j++) {
+            for(int j = i + 1; j < nums.length; j++) {
                 if (target == (nums[i] + nums[j])) {
                     values[0] = i;
                     values[1] = j;
                 }
             }
         }
+        
         return values;
+    }
+}
+
+// Using HashMap with Time Complexity : O(N)
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i < nums.length; i++) {
+            int difference = target - nums[i];
+            if(map.containsKey(difference)) {
+                result[0] = i;
+                result[1] = map.get(difference);
+            }
+            map.put(nums[i], i);
+        }
+        
+        return result;
     }
 }
