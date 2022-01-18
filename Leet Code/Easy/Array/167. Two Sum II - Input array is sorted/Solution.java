@@ -22,20 +22,22 @@ The tests are generated such that there is exactly one solution.
     
 Link: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/ */
 
+//Time Complexity : O(N)
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int[] result = new int[2];
-        for(int i=0; i<numbers.length; i++){
-            for(int j=i+1; j<numbers.length; j++){
-                if(target == numbers[i]+numbers[j]){
-                    result[0] = i;
-                    result[1] = j;
-                }
+        int start = 0;
+        int end = numbers.length - 1;
+        
+        while(start <= end) {
+            if(numbers[start] + numbers[end] == target) {
+                break;
+            } else if(numbers[start] + numbers[end] < target) {
+                start++;
+            } else {
+                end--;
             }
         }
-        for(int i=0; i<result.length; i++){
-            result[i] += 1;
-        }
-        return result;
+        
+        return new int[]{start + 1, end + 1};
     }
 }
