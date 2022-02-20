@@ -21,6 +21,20 @@ n == nums.length
     
 Link: https://leetcode.com/problems/concatenation-of-array/ */
 
+// With single loop
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int length = nums.length;
+        int[] result = new int[2 * length];
+        
+        for(int i = 0; i < 2 * length; i++) {
+            result[i] = nums[i % length];
+        }
+        
+        return result;
+    }
+}
+
 class Solution {
     public int[] getConcatenation(int[] nums) {
         int n = nums.length;
