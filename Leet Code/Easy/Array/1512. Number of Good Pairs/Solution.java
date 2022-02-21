@@ -20,16 +20,37 @@ Constraints:
 
 Link: https://leetcode.com/problems/number-of-good-pairs/ */
 
+// Time Complexity : O(N^2)
 class Solution {
     public int numIdenticalPairs(int[] nums) {
         int good_pairs = 0;
-        for(int i=0; i<nums.length; i++){
-            for(int j=i+1; j<nums.length; j++){
-                if(nums[i] == nums[j]){
+        
+	for(int i = 0; i < nums.length; i++) {
+            for(int j = i + 1; j < nums.length; j++) {
+                if(nums[i] == nums[j]) {
                     good_pairs++;
                 }
             }
         }
+
         return good_pairs;
+    }
+}
+
+// Time Complexity : O(N)
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int[] count = new int[101];
+        int totalPairs = 0;
+        
+        for(int i : nums) {
+            count[i]++;
+        }
+        
+        for(int i : count) {
+            totalPairs += (i * (i - 1)) / 2;
+        }
+        
+        return totalPairs;
     }
 }
