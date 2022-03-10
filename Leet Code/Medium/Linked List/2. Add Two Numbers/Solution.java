@@ -32,31 +32,52 @@ Link: https://leetcode.com/problems/add-two-numbers/ */
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy_head = new ListNode(0);
-        ListNode l3 = dummy_head;
+        if(l1 == null) {
+            return l2;
+        }
+        
+        if(l2 == null) {
+            return l1;
+        }
+        
+        ListNode dummy = new ListNode(-1);
+        ListNode it = dummy;
         int carry = 0;
+        int sum = 0;
         
-        while(l1!=null || l2!=null) {
-            int l1_val = (l1!=null) ? l1.val : 0;
-            int l2_val = (l2!=null) ? l2.val : 0;
-            int current_sum = l1_val + l2_val + carry;
-            
-            carry = current_sum/10;
-            int last_digit = current_sum%10;
-            
-            ListNode new_node = new ListNode(last_digit);
-            l3.next = new_node;
-            
-            if(l1!=null) l1 = l1.next;
-            if(l2!=null) l2 = l2.next;
-            l3 = l3.next;
+        while(l1 != null && l2 != null) {
+            sum = l1.val + l2.val + carry;
+            ListNode current = new ListNode(sum % 10);
+            carry = sum / 10;
+            it.next = current;
+            it = it.next;
+            l1 = l1.next;
+            l2 = l2.next;
         }
         
-        if(carry>0) {
-            ListNode new_node = new ListNode(carry);
-            l3.next = new_node;
-            l3 = l3.next;
+        while(l1 != null) {
+            sum = l1.val + carry;
+            ListNode current = new ListNode(sum % 10);
+            carry = sum / 10;
+            it.next = current;
+            it = it.next;
+            l1 = l1.next;
         }
-        return dummy_head.next;
+        
+        while(l2 != null) {
+            sum = l2.val + carry;
+            ListNode current = new ListNode(sum % 10);
+            carry = sum / 10;
+            it.next = current;
+            it = it.next;
+            l2 = l2.next;
+        }
+        
+        if(carry != 0) {
+            ListNode current = new ListNode(carry);
+            it.next = current;
+        }
+        
+        return dummy.next;
     }
 }
